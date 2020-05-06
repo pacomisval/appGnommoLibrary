@@ -1,0 +1,89 @@
+@import "src/styles/abstracts/variables";
+
+.back{
+    background-color: $yellow-600;
+}
+.jumbo {
+  margin-top: -40px;
+  width: 100%;
+  height: 200px;
+  background-color: $orange-600;
+  color: white;
+}
+.leade {
+  margin-top: -15px;
+  font-family: sans-serif;
+  font-weight: bold;
+  text-align: center;
+}
+.left {
+    margin-left: 700px;
+}
+.linea {
+    display: flex;
+}
+
+.contenedor {
+  width: 65%;
+  height: 100%;
+  background-color: $blue-000;
+  margin: 0 auto;
+  margin-top: -20px;  /* para que no se vea el fondo desplazado hacia abajo 27px cuando cargamos login.component.html */
+}
+
+.verti {
+  padding-top: 100px;
+}
+
+@media (max-width: 1770px) {
+  .left {
+      margin-left: 700px;
+  }
+}
+
+@media (max-width: 1670px) {
+  .left {
+      margin-left: 625px;
+  }
+}
+@media (max-width: 1570px) {
+  .left {
+      margin-left: 550px;
+  }
+}
+
+@media (max-width: 1470px) {
+    .left {
+        margin-left: 450px;
+    }
+  }
+
+@media (max-width: 1370px) {
+    .left {
+        margin-left: 350px;
+    }
+  }
+
+@media (max-width: 1270px) {
+    .left {
+        margin-left: 250px;
+    }
+  }
+
+@media (max-width: 1170px) {
+    .left {
+        margin-left: 150px;
+    }
+  }
+
+@media (max-width: 1070px) {
+    .left {
+        margin-left: 75px;
+    }
+  }
+
+@media (max-width: 990px) {
+    .left {
+      margin-left: 0px;
+    }
+  }

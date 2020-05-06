@@ -1,0 +1,186 @@
+<!-- <br><br><br><br><br><br><br><br><br><br><br><br><br><br> -->
+<h1 class="titulo">Cocina</h1>
+<div class="contain l-columns--5columns">      
+    <div *ngFor="let co of cocina"  class="card" (click)="libroSeleccionado(co.id); abrirPortadaModal(portadaModal)">
+            
+            <br>
+            <div><h5>{{ co.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ co.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ co.first_name }} {{ co.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Viajes</h1>
+<div class="contain l-columns--5columns">   
+    <div *ngFor="let vi of viajes"  class="card" (click)="libroSeleccionado(vi.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ vi.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ vi.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ vi.first_name }} {{ vi.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Juvenil</h1>
+<div class="contain l-columns--5columns">
+    <div *ngFor="let ju of juvenil"  class="card" (click)="libroSeleccionado(ju.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ ju.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ ju.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ ju.first_name }} {{ ju.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Cómic</h1>
+<div class="contain l-columns--5columns">
+    <div *ngFor="let com of comic"  class="card" (click)="libroSeleccionado(com.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ com.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ com.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ com.first_name }} {{ com.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Ciencia ficción</h1>
+<div class="contain l-columns--5columns">
+    <div *ngFor="let ci of cifi"  class="card" (click)="libroSeleccionado(ci.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ ci.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ ci.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ ci.first_name }} {{ ci.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Programación</h1>
+<div class="contain l-columns--5columns">
+    <div *ngFor="let pro of program"  class="card" (click)="libroSeleccionado(pro.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ pro.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ pro.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ pro.first_name }} {{ pro.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Psicología</h1>
+<div class="contain l-columns--5columns">
+    <div *ngFor="let psi of psico"  class="card" (click)="libroSeleccionado(psi.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ psi.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ psi.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ psi.first_name }} {{ psi.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Misterio</h1>
+<div class="contain l-columns--5columns">
+    <div *ngFor="let mis of misterio"  class="card" (click)="libroSeleccionado(mis.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ mis.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ mis.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ mis.first_name }} {{ mis.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Literatura</h1>
+<div class="contain l-columns--5columns">
+    <div *ngFor="let lit of literatura"  class="card" (click)="libroSeleccionado(lit.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ lit.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ lit.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ lit.first_name }} {{ lit.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+<br>
+<hr>
+<h1 class="titulo">Histórica</h1>
+<div class="contain l-columns--5columns">
+    <div *ngFor="let his of historia"  class="card" (click)="libroSeleccionado(his.id); abrirPortadaModal(portadaModal)">
+   
+            <br>
+            <div><h5>{{ his.nombre }}</h5></div>
+            <br>      
+            <div class="sombraLibro"><a><img src="./../../assets/images/book/{{ his.portada }}" alt="" height="100" ></a></div>           
+            <br>
+            <div><span>{{ his.first_name }} {{ his.last_name }}</span></div> 
+            <br>
+
+    </div>   
+</div>
+
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+<ng-template #portadaModal let-moda>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h1 class="titulo">{{ libro.nombre }}</h1>
+                    
+                </div>
+            </div>
+            <div class="modal-body">
+                <h2 class="autor">{{ libro.first_name }} {{ libro.last_name}}</h2>
+                <br><br>
+                <img src="./../../assets/images/book/{{libro.portada}}"  alt="" height="200">
+                <br><br><br><br>
+                <h2 class="description">{{ libro.descripcion }}</h2>
+                    
+            </div>
+            <div class="modal-footer">                  
+                <button (click)="cerrarPortadaModal()"class="btn btn-info" style="margin-left:10px"> Exit</button>       
+            </div>
+        </div>
+    </div>
+</ng-template>

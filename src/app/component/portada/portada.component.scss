@@ -1,0 +1,40 @@
+@import "src/styles/layout/columns";
+@import "src/styles/abstracts/variables";
+
+.titulo {
+    padding: 30px 30px 0px 30px;
+    font-family: sans-serif;
+    font-weight: bold;
+}
+.autor {
+    font-family: sans-serif;
+    font-size: 20px;
+}
+.description {
+    font-family: sans-serif;
+    font-size: 16px;
+
+}
+.contain {
+    padding-top: 30px;
+    display: grid;
+}
+.modal-header, .modal-footer {
+    background-color: $orange-800;
+}
+.card {
+    //display: flex;
+    width: 70%;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    text-align: center;
+    margin: 10px 25px;
+    border: 3px solid $red-100;
+
+    cursor: pointer;
+    
+}
+.sombraLibro {
+    box-shadow: 5px 5px 5px #aaaaaa;
+    margin: 0 auto;
+}
+

@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">
+            <h3>Agregar Autor</h3>
+        </div>
+    </div>
+    <div class="card-body">
+        <form name="authorForm" > 
+            <div class="form-group">
+                <label for="title">Nombre:</label>
+                <input type="first_name" class="form-control" id="first_name" required [(ngModel)]="autor.first_name" name="first_name" />
+            </div>
+            <div class="form-group">
+                <label for="last_name">Apellidos:</label>
+                <input class="form-control" id="last_name" required [(ngModel)]="autor.last_name" name="last_name" />
+            </div>
+            <div class="form-group">
+                <label for="nacionalidad">Nacionalidad:</label>
+                <input type="text" class="form-control" id="nacionalidad" required [(ngModel)]="autor.nacionalidad" name="nacionalidad" />
+            </div>
+            <div class="form-group">
+                <label for="fechaNacimiento">Fecha Nacimiento:</label>
+                <input class="form-control" id="fechaNacimiento" required [(ngModel)]="autor.fechaNacimiento" name="fechaNacimiento" />
+            </div>
+        </form>
+        <button type="button" (click)="Guardar()" class="btn btn-danger">Guardar</button>
+    </div>
+</div>
+<!-- VENTANA MODAL INFORMATIVA -->
+<ng-template #modalInformation let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Gnomo`s Librery</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+<span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <p id="error">{{information}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">
+         Cerrar
+      </button>
+    </div>
+</ng-template>

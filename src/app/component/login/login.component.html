@@ -1,0 +1,310 @@
+<div *ngIf="error" class="alert alert-danger">{{error}}</div>
+<div class="container ">
+    <div *ngIf="loginOpen">
+        <div class="modal-dialog modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h2>Login</h2>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submittedLogin && lfc.email.errors }" />
+                        <div *ngIf="submittedLogin && lfc.email.errors" class="invalid-feedback">
+                            <div *ngIf="lfc.email.errors.required">Email is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submittedLogin && lfc.password.errors }" />
+                        <div *ngIf="submittedLogin && lfc.password.errors" class="invalid-feedback">
+                            <div *ngIf="lfc.password.errors.required">Password is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="button" (click)="abrirModalPass1(recoveryPassword1Modal)" class="btn btn-link">* Recuperar password olvidado</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                    <button [disabled]="loading" (click)="onSubmit()" class="btn btn-primary">
+                  Login</button>
+                    <button (click)="abrirRegisterModal(registerModal)" class="btn btn-info" style="margin-left:10px">
+                  Registrarse</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!--<button (click)="abrirRegisterModal(registerModal)" class="btn btn-info" style="margin-left:10px">Registrarse</button> -->
+
+
+    <ng-template #registerModal let-modal>
+
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title">
+                        <h2>Register</h2>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="userName">Nombre</label>
+                            <input type="text" formControlName="userName" class="form-control" [ngClass]="{ 'is-invalid': submittedRegister && rfc.userName.errors }" />
+                            <div *ngIf="submittedRegister && rfc.userName.errors" class="invalid-feedback">
+                                <div *ngIf="rfc.userName.errors.required">UserName is required</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submittedRegister && rfc.email.errors }" />
+                            <div *ngIf="submittedRegister && rfc.email.errors" class="invalid-feedback">
+                                <div *ngIf="rfc.email.errors.required">Email is required</div>
+                                <div *ngIf="rfc.email.errors.email">Email must be a valid email address</div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col">
+                                <div class="form-group ">
+                                    <label for="password">Password</label>
+                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submittedRegister && rfc.password.errors }" />
+                                    <div *ngIf="submittedRegister && rfc.password.errors" class="invalid-feedback">
+                                        <div *ngIf="rfc.password.errors.required">Password is required</div>
+                                        <div *ngIf="rfc.password.errors.minlength">Password must be at least 6 characters</div>
+                                        <div *ngIf="rfc.confirmPassword.errors.mustMatch">Passwords must match</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- //////////////// -->
+                            <div class="col">
+                                <div class="form-group">
+
+                                    <label for="passwordRepeat">passwordRepeat</label>
+                                    <input type="password" formControlName="passwordRepeat" class="form-control" [ngClass]="{ 'is-invalid': submittedRegister && rfc.passwordRepeat.errors }" />
+                                    <div *ngIf="submittedRegister && rfc.passwordRepeat.errors" class="invalid-feedback">
+                                        <div *ngIf="rfc.passwordRepeat.errors.required">PasswordRepeat is required</div>
+                                        <div *ngIf="rfc.passwordRepeat.errors.mustMatch">
+                                            Passwords have to match</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <!-- <label for="file1">Imagen de Perfil</label> -->
+                            <!--<input type="file" (change)="onFileChange($event)" />-->
+                            <!-- <input type="file" class="form-control-file" id="file1"> -->
+                        </div>
+
+                        <!-- <div *ngIf="Administrador">
+                            <div class="form-check">
+                                <p>Rol</p>
+                                <input class="form-check-input form-check-inline" type="radio" formControlName="rol" id="roles1" value="user">
+                                <label class="form-check-label" for="roles1"> Usuario</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input form-check-inline" type="radio" formControlName="rol" id="roles2" value="admin">
+                                <label class="form-check-label" for="roles2">Administrador</label>
+                            </div>
+                        </div> -->
+                   </form>
+                    <div class="modal-footer ">
+                        <div class="form-group">
+                            <!-- <a (click)="modal.close()" class="btn btn-link">Cancel</a> -->
+                          <button [disabled]="loading" (click)="closeRegister()" class="btn btn-outline-dark mr-3">Cancel</button>
+                            <button [disabled]="loading" (click)="addUserDB()" class="btn btn-primary">Register</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </ng-template>
+
+</div>
+<!-- VENTANA MODAL INFORMATIVA -->
+<ng-template #modalInformation let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Gnomo`s Librery</h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+<span aria-hidden="true">&times;</span>
+</button>
+    </div>
+    <div class="modal-body">
+        <p>{{information}}</p>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">
+ Cerrar
+</button>
+    </div>
+</ng-template> 
+
+<!-- ///////////////////////    MODAL RECUPERACIÓN CONTRASEÑA 1 CREDENCIALES ////////////////////-->
+
+<ng-template #recoveryPassword1Modal let-moda>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h2>Recupera Password</h2>
+                    <h4>Credenciales</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="recoveryPassword1Form" (ngSubmit)="onSubmit()">
+                    <!-- <div class="form-group">
+                        <label for="userName">User</label>
+                        <input type="text" formControlName="userName" class="form-control" [ngClass]="{ 'is-invalid': submittedRecoveryPassword1 && rpc1.userName.errors }" />
+                        <div *ngIf="submittedRecoveryPassword1 && rpc1.userName.errors" class="invalid-feedback">
+                            <div *ngIf="rpc1.userName.errors.required">User is required</div>
+                        </div>
+                    </div> -->
+               <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submittedRecoveryPassword1 && rpc1.email.errors }" />
+                        <div *ngIf="submittedRecoveryPassword1 && rpc1.email.errors" class="invalid-feedback">
+                            <div *ngIf="rpc1.email.errors.required">Email is required</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group mostrar" *ngIf="!recoveryPassword2"> 
+                        <!-- <button type="button" class="btn btn-link">* Recuperar password olvidado</button> -->
+                         <p><b>* Rellena el formulario<br>* En breve se te enviará un código<br>* Verifica tu correo</b></p>
+                    </div>
+                    <div class="form-group ocultar" *ngIf="recoveryPassword2">
+                        <p><b>* Haz click en el enlace<br>cuando tengas el código</b></p>
+                        <button type="button" (click)="abrirModalPass2(recoveryPassword2Modal)" class="btn btn-link">* Introducir codigo</button>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                
+                    <button (click)="sendCredentialsDB()"class="btn btn-info" style="margin-left:10px">
+                    Enviar</button>
+                </div>
+                <!-- <div *ngIf="recoveryPassword2 else abrirModalPass2(recoveryPassword2Modal)" >
+
+                </div>  -->
+
+           </div>
+        </div>
+    </div>
+</ng-template> 
+
+<!-- ///////////////////////    MODAL RECUPERACIÓN CONTRASEÑA 2 CODIGOMODAL  ////////////////////-->
+ <ng-template #recoveryPassword2Modal let-moda>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h2>Recupera Password</h2>
+                    <h4>Código</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="recoveryPassword2Form" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="codigo">Código</label>
+                        <input type="text" formControlName="codigo" class="form-control" [ngClass]="{ 'is-invalid': submittedRecoveryPassword2 && rpc2.codigo.errors }" />
+                        <div *ngIf="submittedRecoveryPassword2 && rpc2.codigo.errors" class="invalid-feedback">
+                            <div *ngIf="rpc2.codigo.errors.required">User is required</div>
+                        </div>
+                    </div>
+             
+                    <div class="form-group" *ngIf="!recoveryPassword3">
+                        <!-- <button type="button" class="btn btn-link">* Recuperar password olvidado</button> -->
+                       <p><b>* Introduce el código que has recibido</b></p>
+                    </div>
+                    <div class="form-group ocultar" *ngIf="recoveryPassword3">
+                        <p><b>* Código aceptado<br>* Haz click en el enlace</b></p>
+                        <button type="button" (click)="abrirModalPass3(recoveryPassword3Modal)" class="btn btn-link">* Crear nueva contraseña</button>
+                    </div>
+                    
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">
+                
+                    <button (click)="sendCodigo()" class="btn btn-info" style="margin-left:10px">
+                    Enviar</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</ng-template> 
+
+<!--////////////////////////////  MODAL RECUPERACION DE CONTRASEÑA 3  NUEVACONTRASEÑA  ///////////////////////-->
+<ng-template #recoveryPassword3Modal let-moda>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title">
+                    <h2>Recupera Password</h2>
+                    <h4>Nueva Contraseña</h4>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="recoveryPassword3Form" (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submittedRecoveryPassword3 && rpc3.email.errors }" />
+                        <div *ngIf="submittedRecoveryPassword3 && rpc3.email.errors" class="invalid-feedback">
+                            <div *ngIf="rpc3.email.errors.required">Email is required</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submittedRecoveryPassword3 && rpc3.password.errors }" />
+                        <div *ngIf="submittedRecoveryPassword3 && rpc3.password.errors" class="invalid-feedback">
+                            <div *ngIf="rpc3.password.errors.required">Password is required</div>
+                            <div *ngIf="rpc3.password.errors.minlength">Password must be at least 6 characters</div>
+                            <div *ngIf="rpc3.confirmPassword.errors.mustMatch">Passwords must match</div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="passwordRepeat">passwordRepeat</label>
+                        <input type="password" formControlName="passwordRepeat" class="form-control" [ngClass]="{ 'is-invalid': submittedRecoveryPassword3 && rpc3.passwordRepeat.errors }" />
+                        <div *ngIf="submittedRecoveryPassword3 && rpc3.passwordRepeat.errors" class="invalid-feedback">
+                            <div *ngIf="rpc3.passwordRepeat.errors.required">PasswordRepeat is required</div>
+                            <div *ngIf="rpc3.passwordRepeat.errors.mustMatch">PasswordRepeat must be at least 6 characters</div>
+                        </div>
+                    </div>
+                    <div class="form-group" *ngIf="!recoveryPassword3">
+                        <!-- <button type="button" class="btn btn-link">* Recuperar password olvidado</button> -->
+                      <p><b>* Contraseña recuperada</b></p>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <div class="form-group">              
+                    <button *ngIf="!recoveryPassword3" (click)="closeRecoveryPassword3()"class="btn btn-info" style="margin-left:10px">
+                    Exit</button>
+                </div>
+                <div class="form-group">              
+                    <button (click)="sendNewPassword()"class="btn btn-info" style="margin-left:10px">
+                    Enviar</button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+
+
+
+
+
+
+
+
+
+ 
